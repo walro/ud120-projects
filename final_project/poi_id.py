@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import sys
 import pickle
@@ -35,11 +35,11 @@ labels, features = targetFeatureSplit(data)
 from sklearn.naive_bayes import GaussianNB
 clf = GaussianNB()
 
-### Task 5: Tune your classifier to achieve better than .3 precision and recall 
+### Task 5: Tune your classifier to achieve better than .3 precision and recall
 ### using our testing script. Check the tester.py script in the final project
 ### folder for details on the evaluation method, especially the test_classifier
 ### function. Because of the small size of the dataset, the script uses
-### stratified shuffle split cross validation. For more info: 
+### stratified shuffle split cross validation. For more info:
 ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
 
 # Example starting point. Try investigating other evaluation techniques!
