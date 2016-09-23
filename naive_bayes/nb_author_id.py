@@ -31,7 +31,13 @@ from sklearn.naive_bayes import GaussianNB
 
 classifier = GaussianNB()
 
+training_time = time()
 classifier.fit(features_train, labels_train)
+print "training time:", round(time() - training_time, 3), "s"
+
+predict_time = time()
+classifier.predict(features_test)
+print "predict time:", round(time() - predict_time, 3), "s"
 
 print "accuracy:", classifier.score(features_test, labels_test)
 
