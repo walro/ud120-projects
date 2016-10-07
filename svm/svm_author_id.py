@@ -29,11 +29,8 @@ from sklearn import svm
 
 classifier = svm.SVC(kernel='rbf', C=10000)
 
-sliced_features_train = features_train[:len(features_train)/100]
-sliced_labels_train = labels_train[:len(labels_train)/100]
-
 training_time = time()
-classifier.fit(sliced_features_train, sliced_labels_train)
+classifier.fit(features_train, labels_train)
 print "training time:", round(time() - training_time, 3), "s"
 
 predict_time = time()
