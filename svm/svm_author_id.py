@@ -27,7 +27,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 from sklearn import svm
 
-classifier = svm.SVC(kernel='rbf')
+classifier = svm.SVC(kernel='rbf', C=10000)
 
 sliced_features_train = features_train[:len(features_train)/100]
 sliced_labels_train = labels_train[:len(labels_train)/100]
