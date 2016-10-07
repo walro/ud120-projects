@@ -26,14 +26,12 @@ features_train, features_test, labels_train, labels_test = preprocess()
 ### your code goes here ###
 
 from sklearn import svm
+from collections import Counter
 
 classifier = svm.SVC(kernel='rbf', C=10000)
 
-sliced_features_train = features_train[:len(features_train)/100]
-sliced_labels_train = labels_train[:len(labels_train)/100]
-
 training_time = time()
-classifier.fit(sliced_features_train, sliced_labels_train)
+classifier.fit(features_train, labels_train)
 print "training time:", round(time() - training_time, 3), "s"
 
 predict_time = time()
@@ -42,9 +40,7 @@ print "predict time:", round(time() - predict_time, 3), "s"
 
 print "accuracy:", classifier.score(features_test, labels_test)
 
-print "10th prediction:", predictions[10]
-print "26th prediction:", predictions[26]
-print "50th prediction:", predictions[50]
+print "chris emails:", Counter(predictions)[1]
 
 #########################################################
 
