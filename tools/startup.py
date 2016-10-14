@@ -25,6 +25,13 @@ try:
 except:
     print "you should install sklearn before continuing"
 
+print "checking for matplotlib"
+try:
+    import matplotlib
+except:
+    print "you should install matplotlib before continuing"
+
+
 print
 print "downloading the Enron dataset (this may take a while)"
 print "to check on progress, you can cd up one level, then execute <ls -lthr>"
