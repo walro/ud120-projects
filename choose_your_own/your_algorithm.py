@@ -24,17 +24,38 @@ plt.scatter(grade_slow, bumpy_slow, color = "r", label="slow")
 plt.legend()
 plt.xlabel("bumpiness")
 plt.ylabel("grade")
-plt.show()
+# plt.show()
+
 ################################################################################
 
 
 ### your code here!  name your classifier object clf if you want the
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from time import time
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
 
+# clf = GaussianNB()
+# clf = SVC(kernel='linear', C=10000)
+# clf = DecisionTreeClassifier(min_samples_split=40)
+clf = KNeighborsClassifier(n_neighbors=1)
+# clf = AdaBoostClassifier(),
+# clf = RandomForestClassifier()
 
+training_time = time()
+clf.fit(features_train, labels_train)
+print "training time:", round(time() - training_time, 3), "s"
 
+predict_time = time()
+clf.predict(features_test)
+print "predict time:", round(time() - predict_time, 3), "s"
 
+print "accuracy:", clf.score(features_test, labels_test)
 
 
 
@@ -42,3 +63,5 @@ try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
+
+plt.show()
