@@ -16,7 +16,6 @@ from feature_format import featureFormat, targetFeatureSplit
 
 
 
-
 def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2"):
     """ some plotting code designed to help you visualize your clusters """
 
@@ -61,7 +60,7 @@ poi, finance_features = targetFeatureSplit( data )
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
 # for f1, f2, _ in finance_features:
-for f1, f2, _ in finance_features:
+for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
 
@@ -69,6 +68,8 @@ plt.show()
 ### for the data and store them to a list called pred
 
 from sklearn.cluster import KMeans
+from sklearn import preprocessing
+
 
 kmeans = KMeans(n_clusters=2)
 kmeans.fit(finance_features)
@@ -86,6 +87,20 @@ salaries = filter(lambda value: value != "NaN", salaries)
 
 print "exercised_stock_options min: {0}, max {1}".format(min(exercised_stock_options), max(exercised_stock_options))
 print "salaries min: {0}, max {1}".format(min(salaries), max(salaries))
+
+min_max_scaler = preprocessing.MinMaxScaler()
+
+print min_max_scaler.fit_transform([
+        [float(min(exercised_stock_options))],
+        [1000000.],
+        [float(max(exercised_stock_options))]
+    ])
+
+print min_max_scaler.fit_transform([
+        [float(min(salaries))],
+        [200000.],
+        [float(max(salaries))]
+    ])
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
