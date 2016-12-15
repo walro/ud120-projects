@@ -41,3 +41,12 @@ labels_train   = labels_train[:150]
 
 
 
+from sklearn import tree
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(features_train, labels_train)
+print clf.score(features_test, labels_test)
+feature_importances = clf.feature_importances_
+
+for index, importance in enumerate(feature_importances):
+  if importance > 0.2:
+    print index, " ", importance
