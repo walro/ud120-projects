@@ -47,6 +47,10 @@ clf = clf.fit(features_train, labels_train)
 print clf.score(features_test, labels_test)
 feature_importances = clf.feature_importances_
 
+important_index = 0
 for index, importance in enumerate(feature_importances):
   if importance > 0.2:
+    important_index = index
     print index, " ", importance
+
+print vectorizer.get_feature_names()[important_index]
