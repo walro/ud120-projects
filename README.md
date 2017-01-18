@@ -14,6 +14,7 @@ Starter project code for students taking Udacity ud120
     pip install scipy
     pip install scikit-learn
     pip install matplotlib
+    pip install pillow
 
 ## Setup
 
